@@ -282,7 +282,7 @@ class TopUserInfo extends StatelessWidget {
   }
 }
 
-/// UserProfiel Section AppBar
+/// User profile Section AppBar
 class UserProfileAppBar extends StatelessWidget with PreferredSizeWidget {
   const UserProfileAppBar({
     Key? key,
