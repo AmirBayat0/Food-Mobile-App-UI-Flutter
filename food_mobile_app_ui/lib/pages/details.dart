@@ -170,20 +170,19 @@ class MyFAB extends StatelessWidget {
     var _foodController = Get.find<FoodController>();
     var _controller = Get.find<SwitchController>();
     return SizedBox(
-      
       height: 70,
       width: 70,
       child: FloatingActionButton(
-        heroTag: "FAB",
         backgroundColor: Colors.black,
         onPressed: () {
-           Get.find<WalletController>().add(
-                                    id: _foodController.salads[_controller.currentSaladIndex].id,
-                                    img: _foodController.salads[_controller.currentSaladIndex].img,
-                                    title: _foodController.salads[_controller.currentSaladIndex].title,
-                                    subtitle: _foodController.salads[_controller.currentSaladIndex].subtitle,
-                                    price: _foodController.salads[_controller.currentSaladIndex].price,
-                                );
+          Get.find<WalletController>().add(
+            id: _foodController.salads[_controller.currentSaladIndex].id,
+            img: _foodController.salads[_controller.currentSaladIndex].img,
+            title: _foodController.salads[_controller.currentSaladIndex].title,
+            subtitle:
+                _foodController.salads[_controller.currentSaladIndex].subtitle,
+            price: _foodController.salads[_controller.currentSaladIndex].price,
+          );
         },
         child: const Icon(
           LineIcons.shoppingCart,
@@ -259,19 +258,18 @@ class HeaderWidget extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 9),
                       child: GetBuilder<FoodController>(
-                        id: "quantity",
-                        builder: (context) {
-                          return Text(
-                            Get.find<FoodController>()
-                                .salads[_controller.currentSaladIndex]
-                                .quantity
-                                .toString(),
-                            style: const TextStyle(
-                              fontSize: 20,
-                            ),
-                          );
-                        }
-                      )),
+                          id: "quantity",
+                          builder: (context) {
+                            return Text(
+                              Get.find<FoodController>()
+                                  .salads[_controller.currentSaladIndex]
+                                  .quantity
+                                  .toString(),
+                              style: const TextStyle(
+                                fontSize: 20,
+                              ),
+                            );
+                          })),
                 ),
                 FadeInRight(
                   delay: const Duration(milliseconds: 600),

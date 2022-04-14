@@ -466,17 +466,14 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
           onPressed: () {},
         ),
         actions: [
-          Hero(
-            tag: "FAB",
-            child: Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  LineIcons.search,
-                  color: Colors.black,
-                  size: 35,
-                ),
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                LineIcons.search,
+                color: Colors.black,
+                size: 35,
               ),
             ),
           ),

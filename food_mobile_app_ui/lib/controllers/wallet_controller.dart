@@ -56,10 +56,9 @@ class WalletController extends GetxController {
   double totalAmount() {
     var sumPrice = 0.0;
     for (SaladModel walletFood in walletFood) {
-      sumPrice = sumPrice + walletFood.price;
+      sumPrice = sumPrice + walletFood.price; 
     }
-    update();
-
     return sumPrice;
+    update();
   }
 }
