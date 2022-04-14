@@ -37,6 +37,7 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
+///Bottom Section Widget Components
 class BottomSection extends StatelessWidget {
   BottomSection({
     Key? key,
@@ -127,6 +128,8 @@ class BottomSection extends StatelessWidget {
   }
 }
 
+
+///Purple Section Widget Components
 class PurpleSection extends StatelessWidget {
   const PurpleSection({
     Key? key,
@@ -184,6 +187,7 @@ class PurpleSection extends StatelessWidget {
   }
 }
 
+/// Components of Purple Section Widget Components
 class ComponentsOfPurpleSection extends StatelessWidget {
   Text title;
   String subtitle;
