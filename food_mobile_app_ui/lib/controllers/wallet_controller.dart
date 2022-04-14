@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+//
 import '../model/salads_model.dart';
 
 class WalletController extends GetxController {
