@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-//
+///
 import '../bindings/all_bindings.dart';
 import '../navigator.dart';
 
