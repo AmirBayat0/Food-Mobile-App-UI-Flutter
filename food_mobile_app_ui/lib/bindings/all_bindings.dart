@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
-//
+///
+import '../controllers/drawer_controller.dart';
+import '../controllers/splash_controller.dart';
 import '../controllers/wallet_controller.dart';
 import '../controllers/navigator_controllers.dart';
 import '../controllers/switch_controller.dart';
@@ -14,5 +16,8 @@ class MyBindings implements Bindings {
     Get.lazyPut(() => SwitchController());
     Get.lazyPut(() => FoodController());
     Get.lazyPut(() => WalletController());
+    Get.lazyPut(() => SplashController());
+    Get.lazyPut(() => MainDrawerController());
+    
   }
 }

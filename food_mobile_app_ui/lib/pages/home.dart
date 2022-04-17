@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
 //
+import '../controllers/navigator_controllers.dart';
 import '../controllers/food_controller.dart';
 import '../controllers/wallet_controller.dart';
 import '../controllers/switch_controller.dart';
@@ -23,8 +24,10 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return SafeArea(
       child: Scaffold(
+        drawer: mainDrawer(3),
         appBar: const MyAppBar(),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -57,7 +60,7 @@ class BottomSaladGridView extends StatelessWidget {
       height: h / 2.9,
       child: GridView.builder(
           physics: const BouncingScrollPhysics(),
-          itemCount:  _foodController.salads.length,
+          itemCount: _foodController.salads.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 0.75,
@@ -98,7 +101,7 @@ class BottomSaladGridView extends StatelessWidget {
                             height: h / 5.5,
                             child: Center(
                               child: Image.asset(
-                                 _foodController.salads[index].img,
+                                _foodController.salads[index].img,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -116,7 +119,7 @@ class BottomSaladGridView extends StatelessWidget {
                           height: h / 30,
                           child: Center(
                             child: Text(
-                               _foodController.salads[index].title,
+                              _foodController.salads[index].title,
                               style: GoogleFonts.oxygen(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
@@ -132,7 +135,7 @@ class BottomSaladGridView extends StatelessWidget {
                       child: FadeInDown(
                         delay: const Duration(milliseconds: 1800),
                         child: Text(
-                           _foodController.salads[index].subtitle,
+                          _foodController.salads[index].subtitle,
                           style: GoogleFonts.oxygen(
                               color: const Color.fromARGB(255, 135, 134, 134),
                               fontWeight: FontWeight.w300,
@@ -146,7 +149,7 @@ class BottomSaladGridView extends StatelessWidget {
                       child: FadeInDown(
                         delay: const Duration(milliseconds: 1900),
                         child: Text(
-                          "\$${ _foodController.salads[index].price.toStringAsFixed(2)}",
+                          "\$${_foodController.salads[index].price.toStringAsFixed(2)}",
                           style: GoogleFonts.oxygen(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -164,12 +167,13 @@ class BottomSaladGridView extends StatelessWidget {
                           child: IconButton(
                               onPressed: () {
                                 Get.find<WalletController>().add(
-                                    id: _foodController.salads[index].id,
-                                    img: _foodController.salads[index].img,
-                                    title: _foodController.salads[index].title,
-                                    subtitle: _foodController.salads[index].subtitle,
-                                    price: _foodController.salads[index].price,
-                                    );
+                                  id: _foodController.salads[index].id,
+                                  img: _foodController.salads[index].img,
+                                  title: _foodController.salads[index].title,
+                                  subtitle:
+                                      _foodController.salads[index].subtitle,
+                                  price: _foodController.salads[index].price,
+                                );
                               },
                               icon: const Icon(
                                 Icons.add,
@@ -201,7 +205,7 @@ class MiddleSaladsPageView extends StatelessWidget {
         width: w,
         height: h / 4.5,
         child: PageView.builder(
-            itemCount:  _foodController.salads.length,
+            itemCount: _foodController.salads.length,
             physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
               return GestureDetector(
@@ -299,11 +303,12 @@ class MiddleSaladsPageView extends StatelessWidget {
                           child: IconButton(
                               onPressed: () {
                                 Get.find<WalletController>().add(
-                                    id: _foodController.salads[index].id,
-                                    img: _foodController.salads[index].img,
-                                    title: _foodController.salads[index].title,
-                                    subtitle: _foodController.salads[index].subtitle,
-                                    price: _foodController.salads[index].price,
+                                  id: _foodController.salads[index].id,
+                                  img: _foodController.salads[index].img,
+                                  title: _foodController.salads[index].title,
+                                  subtitle:
+                                      _foodController.salads[index].subtitle,
+                                  price: _foodController.salads[index].price,
                                 );
                               },
                               icon: const Icon(
@@ -463,20 +468,22 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
             color: Colors.black,
             size: 35,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                LineIcons.search,
-                color: Colors.black,
-                size: 35,
+            padding: const EdgeInsets.fromLTRB(0, 2, 10, 2),
+            child: GestureDetector(
+              onTap: () {
+                Get.find<NavigatorController>().changeNavBarIndex(2);
+              },
+              child: const CircleAvatar(
+                backgroundImage: AssetImage("assets/images/me.jpg"),
               ),
             ),
-          ),
+          )
         ],
       ),
     );

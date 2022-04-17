@@ -1,11 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:food_mobile_app_ui/controllers/navigator_controllers.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:lottie/lottie.dart';
 //
+import '../controllers/navigator_controllers.dart';
 import '../controllers/wallet_controller.dart';
 import '../utils/constanst.dart';
 
@@ -14,10 +14,11 @@ class WalletPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return  SafeArea(
       child: Scaffold(
-        appBar: MyAppBar(),
-        body: Padding(
+        drawer: mainDrawer(1),
+        appBar: const MyAppBar(),
+        body: const Padding(
           padding: EdgeInsets.all(10.0),
           child: MainItem(),
         ),
@@ -49,7 +50,7 @@ class MainItem extends StatelessWidget {
                         delay: const Duration(milliseconds: 300),
                         child: Lottie.network(
                             "https://assets8.lottiefiles.com/packages/lf20_ZZ7nur.json",
-                            animate: false),
+                            animate: true),
                       ),
                     ),
                     const SizedBox(
@@ -300,7 +301,9 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
             color: Colors.black,
             size: 35,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
       ),
       actions: [
@@ -337,8 +340,8 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
                       delay: const Duration(milliseconds: 400),
                       child: IconButton(
                           onPressed: () {
-                            Get.find<NavigatorController>().currentIndex.value =
-                                0;
+                            Get.find<NavigatorController>().changeNavBarIndex(0);
+                                
                           },
                           icon: const Icon(
                             LineIcons.plusCircle,

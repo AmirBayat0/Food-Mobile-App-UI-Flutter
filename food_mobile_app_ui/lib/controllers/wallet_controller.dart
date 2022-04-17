@@ -59,6 +59,6 @@ class WalletController extends GetxController {
       sumPrice = sumPrice + walletFood.price; 
     }
     return sumPrice;
-    update();
+    
   }
 }

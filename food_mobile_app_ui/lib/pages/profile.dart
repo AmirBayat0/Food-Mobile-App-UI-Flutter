@@ -1,5 +1,4 @@
 // ignore_for_file: must_be_immutable
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,10 +12,17 @@ import '../utils/constanst.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
+/////////////////////////////////////
+//@CodeWithFlexz on Instagram
+//
+//AmirBayat0 on Github
+//Programming with Flexz on Youtube
+/////////////////////////////////////
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: mainDrawer(0),
         appBar: const UserProfileAppBar(),
         body: Column(
           children: [
@@ -127,7 +133,6 @@ class BottomSection extends StatelessWidget {
     );
   }
 }
-
 
 ///Purple Section Widget Components
 class PurpleSection extends StatelessWidget {
@@ -303,14 +308,16 @@ class UserProfileAppBar extends StatelessWidget with PreferredSizeWidget {
             color: Colors.black,
             size: 35,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: IconButton(
               onPressed: () {
-                Get.find<NavigatorController>().currentIndex.value = 1;
+                Get.find<NavigatorController>().changeNavBarIndex(1);
               },
               icon: const Icon(
                 LineIcons.shoppingCart,
