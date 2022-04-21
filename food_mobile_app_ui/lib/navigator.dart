@@ -4,6 +4,7 @@ import 'package:line_icons/line_icons.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 
 //
+import '../pages/landscape_mode.dart';
 import '../pages/home.dart';
 import '../pages/profile.dart';
 import '../pages/wallet.dart';
@@ -21,28 +22,27 @@ class MainNavigator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+
     /// Controller
     final _controller = Get.find<NavigatorController>();
-    return SafeArea(
-      child: Scaffold(
-        
-        /// Screens
-        body:  GetBuilder<NavigatorController>(
-          id: "change NavBar Index",
-          builder: (context) {
-            return screens[_controller.currentIndex];
-          }
-        ),
-        
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      return SafeArea(
+        child: Scaffold(
+          /// Screens
+          body: GetBuilder<NavigatorController>(
+              id: "change NavBar Index",
+              builder: (context) {
+                return screens[_controller.currentIndex];
+              }),
 
-        /// bottomNavigationBar
-        bottomNavigationBar:
-          
-             GetBuilder<NavigatorController>(
-               id: "change NavBar Index",
-               builder: (context) {
-                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
+          /// bottomNavigationBar
+          bottomNavigationBar: GetBuilder<NavigatorController>(
+              id: "change NavBar Index",
+              builder: (context) {
+                return Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: 10, left: 10, right: 10),
                   child: CustomNavigationBar(
                     elevation: 40,
                     iconSize: 30.0,
@@ -80,11 +80,12 @@ class MainNavigator extends StatelessWidget {
                       ),
                     ],
                   ),
-           
-        );
-               }
-             ),
-      ),
-    );
+                );
+              }),
+        ),
+      );
+    } else {
+      return const LandScape();
+    }
   }
 }

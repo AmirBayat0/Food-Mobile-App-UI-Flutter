@@ -1,10 +1,13 @@
 // ignore_for_file: must_be_immutable
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:food_mobile_app_ui/controllers/discount_controller.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_icons/line_icons.dart';
+
 ///
+import '../pages/setting.dart';
 import '../controllers/navigator_controllers.dart';
 import '../controllers/wallet_controller.dart';
 import '../utils/constanst.dart';
@@ -12,12 +15,6 @@ import '../utils/constanst.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
-/////////////////////////////////////
-//@CodeWithFlexz on Instagram
-//
-//AmirBayat0 on Github
-//Programming with Flexz on Youtube
-/////////////////////////////////////
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -90,7 +87,12 @@ class BottomSection extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    index == 4
+                        ? Get.to(const SettingPage(),
+                            transition: Transition.cupertino)
+                        : Container();
+                  },
                   child: FadeInUp(
                     delay: Duration(milliseconds: 1010 * index ~/ 1.5),
                     child: Container(
@@ -157,7 +159,8 @@ class PurpleSection extends StatelessWidget {
           children: [
             ComponentsOfPurpleSection(
               title: Text(
-                "10%",
+                Get.find<DiscountController>()
+                    .calDiscount(Get.find<WalletController>().totalAmount()),
                 style: GoogleFonts.oxygen(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

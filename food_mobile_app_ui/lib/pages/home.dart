@@ -395,7 +395,9 @@ class TabBar extends StatelessWidget {
                     LineIcons.horizontalSliders,
                     size: 40,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.changeThemeMode(ThemeMode.dark);
+                  },
                 ),
               ),
             ),

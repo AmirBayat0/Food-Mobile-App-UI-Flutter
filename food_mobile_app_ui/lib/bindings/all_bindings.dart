@@ -1,3 +1,4 @@
+import 'package:food_mobile_app_ui/controllers/discount_controller.dart';
 import 'package:get/get.dart';
 ///
 import '../controllers/drawer_controller.dart';
@@ -18,6 +19,7 @@ class MyBindings implements Bindings {
     Get.lazyPut(() => WalletController());
     Get.lazyPut(() => SplashController());
     Get.lazyPut(() => MainDrawerController());
+    Get.lazyPut(() => DiscountController());
     
   }
 }

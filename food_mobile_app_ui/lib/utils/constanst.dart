@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 //
@@ -86,11 +87,68 @@ Drawer mainDrawer(int index) {
                             case 0:
                               navController.changeNavBarIndex(2);
                               break;
+
                             case 1:
                               navController.changeNavBarIndex(1);
                               break;
+
                             case 3:
                               navController.changeNavBarIndex(0);
+                              break;
+
+                            case 6:
+                              Navigator.pop(context);
+                              Future.delayed(const Duration(milliseconds: 300),
+                                  () {
+                                  return showDialog<void>(
+                                  context: context,
+                                  barrierDismissible:
+                                      false, // user must tap button!
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: const Text(
+                                        "Hey You!",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w300),
+                                      ),
+                                      content: SingleChildScrollView(
+                                        child: ListBody(
+                                          children: const <Widget>[
+                                            Text(
+                                                'Do you really want to exit from our app? ',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Color.fromARGB(
+                                                        255, 134, 134, 134))),
+                                          ],
+                                        ),
+                                      ),
+                                      actions: <Widget>[
+                                        TextButton(
+                                            child: const Text(
+                                              'Nup',
+                                              style: TextStyle(
+                                                  color: Color.fromARGB(
+                                                      255, 109, 109, 109)),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            }),
+                                        TextButton(
+                                            child: const Text(
+                                              'Yup',
+                                              style: TextStyle(
+                                                  color: Colors.deepPurpleAccent),
+                                            ),
+                                            onPressed: () {
+                                              SystemNavigator.pop();
+                                            }),
+                                      ],
+                                    );
+                                  },
+                                );
+                              });
+
                               break;
 
                             default:
@@ -103,7 +161,7 @@ Drawer mainDrawer(int index) {
                             tileColor:
                                 controller.currentDrawerItmeIndex == index
                                     ? const Color.fromARGB(255, 219, 205, 255)
-                                    : Colors.white,
+                                    : Colors.transparent,
                             leading: Icon(
                               drawerItem[index].icon,
                               color: controller.currentDrawerItmeIndex == index
