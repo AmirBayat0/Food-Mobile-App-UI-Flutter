@@ -4,6 +4,7 @@
 * [Part 2](https://www.instagram.com/tv/CcTEFAWj5DU/?utm_source=ig_web_copy_link)
 * [Part 3](https://www.instagram.com/tv/CcXwglbDFht/?igshid=YmMyMTA2M2Y=)
 * [Part 4](https://www.instagram.com/tv/CcdIzXdDMY_/?utm_source=ig_web_copy_link)
+* [Part 5](https://www.instagram.com/tv/Ccm1Q1WDwCv/?utm_source=ig_web_copy_link)
 
 ## Links
 * [My Socials](https://znap.link/CodeWithFlexz)
